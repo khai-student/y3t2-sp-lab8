@@ -8,6 +8,42 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel FlowDirection="LeftToRight" Orientation="Vertical">
+            <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                <Button x:Name="searchButton" Content="Search" Margin="10" Click="searchButton_Click"/>
+                <TextBox 
+                    x:Name="searchPattern" 
+                    PlaceholderText="Search text..."
+                    TextAlignment="Center"
+                    Width="220"
+                    Margin="10"></TextBox>
+                <Button x:Name="cdButton" Content="Choose directory" Margin="10" Click="cdButton_Click"/>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ListView x:Name="listView"
+                      HorizontalAlignment="Stretch"
+                      Margin="0,0,0,0"
+                      VerticalAlignment="Stretch"
+                      SelectionMode="None"
+                      IsItemClickEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Filename}" 
+                               Margin="20,0,20,8"
+                               FontSize="16" 
+                               FontStyle="Normal" 
+                               FontWeight="SemiBold"
+                               Foreground="Black" />
+                                <TextBlock Text="{Binding Size}" 
+                               Margin="20,0,20,8"
+                               FontSize="10"
+                               Foreground="DarkGray"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </StackPanel>
     </Grid>
 </Page>
